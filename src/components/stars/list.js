@@ -9,32 +9,27 @@ export default class StarsList extends React.Component {
   render() {
     console.log('About to render', this.props.stars);
     return(
-      <div className='starsList'>
-
-        <form action="">
-          <input placeholder="Search..."/>
+      <React.Fragment>
+        <form onSubmit={this.props.handleSearch}>
+          <input placeholder='Stars Name...'/>
         </form>
-
-        <form action="">
-          {
-            this.props.stars.map((stars, i) => 
-              <div key={i}>
-                <input 
-                  onChange={this.props.loader}
-                  type="radio"
-                  id={stars.name}
-                  name="stars"
-                  value={stars.url}
-                />
-                <label htmlFor={stars.name}>
-                  {stars.name}
-                </label>
-              </div>
-            )
-          }
-        </form>
-      This is the list of stars
-      </div>
+        {
+          this.props.stars.map((stars, index) => {
+            <div key={index}>
+              <input 
+                onChange={this.props.loadStarsDetails}
+                type='radio'
+                id={stars.name}
+                name='stars'
+                value={stars.url}
+              />
+              <label htmlFor={stars.name}>
+                {stars.name}
+              </label>
+            </div>;
+          })
+        }
+      </React.Fragment>
     );
   }
 }
