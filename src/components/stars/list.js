@@ -1,35 +1,36 @@
-import React from 'react';
+import React, { Component, Fragment } from 'react';
 
-export default class StarsList extends React.Component {
-
-  constructor(props) {
-    super(props);
-  }
+export default class StarsList extends Component {
 
   render() {
-    console.log('About to render', this.props.stars);
+    console.log(this.props.stars);
     return(
-      <React.Fragment>
-        <form onSubmit={this.props.handleSearch}>
-          <input placeholder='Stars Name...'/>
-        </form>
+      <div>
+        <h1>My List</h1>
         {
-          this.props.stars.map((stars, index) => {
-            <div key={index}>
-              <input 
-                onChange={this.props.loadStarsDetails}
-                type='radio'
-                id={stars.name}
-                name='stars'
-                value={stars.url}
-              />
-              <label htmlFor={stars.name}>
-                {stars.name}
-              </label>
-            </div>;
-          })
+          this.props.stars.map((star, index) => <p key={index}>{star.data.title}</p>)
         }
-      </React.Fragment>
+      </div>
     );
   }
 }
+
+// <form onSubmit={this.props.handleSearch}>
+//   <input placeholder='Stars Name...' />
+// </form>
+// {
+//   this.props.stars.map((stars, index) => {
+//     <div key={index}>
+//       <input
+//         onChange={this.props.loadStarsDetails}
+//         type='radio'
+//         id={stars.name}
+//         name='stars'
+//         value={stars.url}
+//       />
+//       <label htmlFor={stars.name}>
+//         {stars.name}
+//       </label>
+//     </div>;
+//   })
+// }
