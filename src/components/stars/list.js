@@ -8,7 +8,16 @@ export default class StarsList extends Component {
       <div>
         <h1>My List</h1>
         {
-          this.props.stars.map((star, index) => <p key={index}>{star.data.title}</p>)
+          this.props.stars.map((star, index) => (
+            <ul>
+              <a 
+                target="blank" 
+                href={star.data.url} 
+                key={index}>
+                <li>{star.data.title}</li>
+              </a>
+            </ul>
+          ))
         }
       </div>
     );
